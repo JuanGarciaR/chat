@@ -1,0 +1,7 @@
+body {
+  font-size: 16px;
+}
+#chats div {
+  border: 1px solid #555;
+  margin: 1em;
+}

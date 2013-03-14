@@ -1,0 +1,30 @@
+!!! 5
+html
+	head
+		title Chatroom
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		link(rel="stylesheet", href="/static/estilos.css")
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", type="text/javascript")
+		script(src="/static/dajax/jquery.dajax.core.js")
+		script(src="http://localhost:4000/faye/client.js")
+		script(src="/static/chat.js")
+		script(src="/static/main.js")
+		script(src="/static/dajaxice/dajaxice.core.js", type="text/javascript", charset="utf-8")
+
+	body
+		section#chats
+			{% for div_id in div_ids %}
+			div(id="{{ div_id.id }}", data-active="false")
+				h3 {{ div_id.name }}
+				ul
+					{% for comment in div_id.comments %}
+					li {{ comment.user_from.username }}: {{ comment.message }}
+					{% endfor %}
+			{% endfor %}
+		aside#users
+			ul
+				{% for user in users %}
+				li
+					a(href="#") {{ user.username }}
+				{% endfor %}
+			input#entry(type="text", disabled="true")
